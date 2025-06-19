@@ -97,4 +97,12 @@ async function setupVideo() {
 
 function addTracks() {
   localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+  window.onload = () => {
+  const params = new URLSearchParams(window.location.search);
+  const roomId = params.get('room');
+  if (roomId) {
+    joinRoom(roomId);
+  }
+};
+
 }
