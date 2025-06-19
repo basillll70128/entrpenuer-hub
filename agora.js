@@ -1,5 +1,5 @@
 // agora.js
-const APP_ID = "YOUR_APP_ID_HERE"; // Replace with your real Agora App ID
+const APP_ID = "79d6dc2234a443709f5a0a1cda818b1a"; // Replace with your real Agora App ID
 const TOKEN = null;
 let client, localTracks = [];
 
