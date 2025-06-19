@@ -13,7 +13,7 @@ const servers = {
   iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
 };
 
-// Main entry point — called when user clicks “Join” in any room
+// 🔁 Main entry point — handles caller or joiner
 function joinRoom(roomId) {
   const isCaller = confirm("Are you the first one in the room? Click OK to Start, Cancel to Join");
 
@@ -24,8 +24,23 @@ function joinRoom(roomId) {
   }
 }
 
+// 🎥 Setup local + remote video
+async function setupVideo() {
+  localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+  remoteStream = new MediaStream();
+
+  document.getElementById("localVideo").srcObject = localStream;
+  document.getElementById("remoteVideo").srcObject = remoteStream;
+}
+
+// 🎙️ Add local tracks to peer connection
+function addTracks() {
+  localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+}
+
+// 🧑 Start room and send offer
 async function startRoom(roomId) {
-  setupVideo();
+  await setupVideo();
 
   peerConnection = new RTCPeerConnection(servers);
   addTracks();
@@ -57,8 +72,9 @@ async function startRoom(roomId) {
   });
 }
 
+// 👥 Join existing room using offer
 async function joinExistingRoom(roomId) {
-  setupVideo();
+  await setupVideo();
 
   peerConnection = new RTCPeerConnection(servers);
   addTracks();
@@ -87,22 +103,11 @@ async function joinExistingRoom(roomId) {
   });
 }
 
-async function setupVideo() {
-  localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-  remoteStream = new MediaStream();
-
-  document.getElementById("localVideo").srcObject = localStream;
-  document.getElementById("remoteVideo").srcObject = remoteStream;
-}
-
-function addTracks() {
-  localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
-  window.onload = () => {
+// 🌐 Auto-detect room from URL and join
+window.onload = () => {
   const params = new URLSearchParams(window.location.search);
-  const roomId = params.get('room');
+  const roomId = params.get("room");
   if (roomId) {
     joinRoom(roomId);
   }
 };
-
-}
