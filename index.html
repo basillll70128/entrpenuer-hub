@@ -135,18 +135,30 @@
     <p class="text-center mt-6 text-gray-400">© 2024 EntreFix. Built for entrepreneurs, by entrepreneurs.</p>
   </footer>
 
-  <!-- Join Room Script -->
- <script>
-  function joinRoom(roomName) {
-    const roomLinks = {
-      "idea-exchange": "https://basilbiju.daily.co/idea-exchange",
-      "pitch-practice": "https://basilbiju.daily.co/pitch-practice",
-      "growth-hacks": "https://basilbiju.daily.co/growth-hacks",
-      "tech-talk": "https://basilbiju.daily.co/tech-talk"
-    };
-    
- }
-</script>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entrepreneur Video Chat</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Live Entrepreneur Video Room</h1>
+
+  <div class="videos">
+    <video id="localVideo" autoplay muted></video>
+    <video id="remoteVideo" autoplay></video>
+  </div>
+
+  <div class="buttons">
+    <button onclick="startCall()">Start Camera</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
 
 </body>
 </html>
