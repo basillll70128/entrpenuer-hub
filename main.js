@@ -5,6 +5,8 @@ const firebaseConfig = {
   databaseURL: "https://entrefix-ffde6-default-rtdb.firebaseio.com",
   projectId: "entrefix-ffde6"
 };
+
+// ✅ Init Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
@@ -13,7 +15,7 @@ const servers = {
   iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
 };
 
-// 🔁 Main entry point — handles caller or joiner
+// 👥 Handle join button click
 function joinRoom(roomId) {
   const isCaller = confirm("Are you the first one in the room? Click OK to Start, Cancel to Join");
 
@@ -24,24 +26,28 @@ function joinRoom(roomId) {
   }
 }
 
-// 🎥 Setup local + remote video
+// 🎥 Setup local and remote video
 async function setupVideo() {
-  localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-  remoteStream = new MediaStream();
+  try {
+    localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+    remoteStream = new MediaStream();
 
-  document.getElementById("localVideo").srcObject = localStream;
-  document.getElementById("remoteVideo").srcObject = remoteStream;
+    document.getElementById("localVideo").srcObject = localStream;
+    document.getElementById("remoteVideo").srcObject = remoteStream;
+  } catch (err) {
+    alert("Please allow camera and microphone permissions to join the room.");
+    console.error("Media error:", err);
+  }
 }
 
-// 🎙️ Add local tracks to peer connection
+// 🎙️ Add local stream tracks to peer
 function addTracks() {
   localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
 }
 
-// 🧑 Start room and send offer
+// 🧑 Caller: Create room and send offer
 async function startRoom(roomId) {
   await setupVideo();
-
   peerConnection = new RTCPeerConnection(servers);
   addTracks();
 
@@ -72,10 +78,9 @@ async function startRoom(roomId) {
   });
 }
 
-// 👥 Join existing room using offer
+// 👤 Joiner: Receive offer and send answer
 async function joinExistingRoom(roomId) {
   await setupVideo();
-
   peerConnection = new RTCPeerConnection(servers);
   addTracks();
 
@@ -102,12 +107,3 @@ async function joinExistingRoom(roomId) {
     peerConnection.addIceCandidate(candidate);
   });
 }
-
-// 🌐 Auto-detect room from URL and join
-window.onload = () => {
-  const params = new URLSearchParams(window.location.search);
-  const roomId = params.get("room");
-  if (roomId) {
-    joinRoom(roomId);
-  }
-};
