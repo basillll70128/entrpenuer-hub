@@ -114,7 +114,26 @@
     <p class="text-center mt-6 text-gray-400">© 2024 EntreFix. Built for entrepreneurs, by entrepreneurs.</p>
   </footer>
 
-  <!-- WebRTC Script -->
-  <script src="script.js"></script>
+  <!-- WebRTC JS Inside HTML -->
+  <script>
+    let localStream;
+
+    async function startCall() {
+      try {
+        localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+        document.getElementById('localVideo').srcObject = localStream;
+        console.log("Camera and mic started.");
+      } catch (err) {
+        console.error("Camera access error:", err);
+        alert("Please allow camera and microphone access.");
+      }
+    }
+
+    function joinRoom(roomName) {
+      // Placeholder for your future routing logic
+      alert("Joining room: " + roomName);
+    }
+  </script>
+
 </body>
 </html>
