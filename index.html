@@ -65,63 +65,80 @@
  <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Feedback Form</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Form</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      padding: 20px;
-      background: #f5f5f5;
+      background: #f7f7f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
-    .feedback-form {
+    .contact-form {
       background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      max-width: 400px;
-      margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      width: 100%;
     }
-    label {
-      display: block;
-      margin-top: 15px;
+    .contact-form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    .input-row {
+      display: flex;
+      gap: 20px;
+    }
+    .input-row input {
+      flex: 1;
     }
     input, textarea {
       width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 120px;
     }
     button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: #007BFF;
-      border: none;
+      background: #2b2b2b;
       color: white;
-      border-radius: 4px;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 5px;
       cursor: pointer;
+      display: block;
+      width: 100%;
+      margin-top: 10px;
     }
     button:hover {
-      background: #0056b3;
+      background: #444;
     }
   </style>
 </head>
 <body>
 
-  <form class="feedback-form" action="https://formspree.io/f/xnnvbkwv" method="POST">
-    <h2>Send Feedback</h2>
+  <form class="contact-form" action="https://formspree.io/f/xnnvbkwv" method="POST">
+    <h2>Send Us a Message</h2>
 
-    <label>
-      Your Email:
-      <input type="email" name="email" required>
-    </label>
+    <div class="input-row">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+    </div>
 
-    <label>
-      Your Message:
-      <textarea name="message" rows="5" required></textarea>
-    </label>
+    <textarea name="message" placeholder="Your Message" required></textarea>
 
-    <button type="submit">Send</button>
+    <button type="submit">SEND MESSAGE</button>
   </form>
 
 </body>
@@ -141,8 +158,6 @@
       <div>
         <p><strong>Community</strong></p>
         <p>Guidelines</p>
-        <p>Events</p>
-        <p>Success Stories</p>
       </div>
     </div>
     <div class="mt-2">
