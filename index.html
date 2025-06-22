@@ -62,21 +62,71 @@
       </div>
     </div>
   </section>  
-  <form
-  action="https://formspree.io/f/xnnvbkwv"
-  method="POST"
->
-  <label>
-    Your email:
-    <input type="email" name="email">
-  </label>
-  <label>
-    Your message:
-    <textarea name="message"></textarea>
-  </label>
-  <!-- your other form fields go here -->
-  <button type="submit">Send</button>
-</form>
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Feedback Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .feedback-form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #007BFF;
+      border: none;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <form class="feedback-form" action="https://formspree.io/f/xnnvbkwv" method="POST">
+    <h2>Send Feedback</h2>
+
+    <label>
+      Your Email:
+      <input type="email" name="email" required>
+    </label>
+
+    <label>
+      Your Message:
+      <textarea name="message" rows="5" required></textarea>
+    </label>
+
+    <button type="submit">Send</button>
+  </form>
+
+</body>
+</html>
+
 
   <!-- Footer -->
   <footer class="text-sm text-center text-gray-500 px-4 py-6 border-t">
