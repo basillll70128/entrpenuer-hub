@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>EntreChat - Where Entrepreneurs Never Stop Talking</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
@@ -61,89 +61,22 @@
         <p class="text-sm text-gray-600">Meet potential business partners and team members instantly</p>
       </div>
     </div>
-  </section>  
- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact Form</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f7f7f7;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .contact-form {
-      background: #fff;
-      padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      max-width: 600px;
-      width: 100%;
-    }
-    .contact-form h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-weight: 500;
-    }
-    .input-row {
-      display: flex;
-      gap: 20px;
-    }
-    .input-row input {
-      flex: 1;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      margin: 10px 0;
-      font-size: 16px;
-    }
-    textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
-    button {
-      background: #2b2b2b;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      font-size: 16px;
-      border-radius: 5px;
-      cursor: pointer;
-      display: block;
-      width: 100%;
-      margin-top: 10px;
-    }
-    button:hover {
-      background: #444;
-    }
-  </style>
-</head>
-<body>
+  </section>
 
-  <form class="contact-form" action="https://formspree.io/f/xnnvbkwv" method="POST">
-    <h2>Send Us a Message</h2>
-
-    <div class="input-row">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
+  <!-- Contact Form -->
+  <section class="bg-white py-16 px-4">
+    <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-semibold text-center mb-6">Send Us a Message</h2>
+      <form action="https://formspree.io/f/xnnvbkwv" method="POST" class="space-y-4">
+        <div class="flex flex-col md:flex-row gap-4">
+          <input type="text" name="name" placeholder="Your Name" required class="flex-1 border border-gray-300 p-3 rounded"/>
+          <input type="email" name="email" placeholder="Your Email" required class="flex-1 border border-gray-300 p-3 rounded"/>
+        </div>
+        <textarea name="message" placeholder="Your Message" required class="w-full border border-gray-300 p-3 rounded min-h-[120px]"></textarea>
+        <button type="submit" class="w-full bg-black text-white py-3 rounded hover:bg-gray-800">SEND MESSAGE</button>
+      </form>
     </div>
-
-    <textarea name="message" placeholder="Your Message" required></textarea>
-
-    <button type="submit">SEND MESSAGE</button>
-  </form>
-
-</body>
-</html>
-
+  </section>
 
   <!-- Footer -->
   <footer class="text-sm text-center text-gray-500 px-4 py-6 border-t">
