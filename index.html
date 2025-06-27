@@ -5,14 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>EntreChat - Where Entrepreneurs Never Stop Talking</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 220px;
+      height: 100%;
+      background-color: #111;
+      color: white;
+      padding-top: 60px;
+      transition: 0.3s;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar a {
+      padding: 14px 20px;
+      text-decoration: none;
+      color: #fff;
+      display: block;
+    }
+
+    .sidebar a:hover {
+      background-color: #575757;
+    }
+  </style>
 </head>
 <body class="bg-white text-gray-800">
 
   <!-- Header -->
   <header class="flex justify-between items-center p-4 border-b">
-    <h1 class="text-xl font-bold text-blue-600">EntreFix</h1>
+    <div class="flex items-center gap-4">
+      <h1 class="text-xl font-bold text-blue-600">EntreFix</h1>
+      <button class="text-2xl" onclick="toggleMenu()">☰</button>
+    </div>
     <button class="text-sm border px-4 py-1 rounded hover:bg-blue-600 hover:text-white">Sign in</button>
   </header>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <a href="#donate">Donate</a>
+    <a href="#buy-time">Buy Time</a>
+  </div>
 
   <!-- Hero Section -->
   <section class="text-center px-4 py-10">
@@ -97,6 +133,14 @@
       <p>Help Center · Privacy Policy · Terms of Service</p>
     </div>
   </footer>
+
+  <!-- Sidebar Toggle Script -->
+  <script>
+    function toggleMenu() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.style.left = sidebar.style.left === '0px' ? '-250px' : '0px';
+    }
+  </script>
 
 </body>
 </html>
